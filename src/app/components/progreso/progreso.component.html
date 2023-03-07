@@ -11,7 +11,7 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
           <a class="navbar-brand" href="home">Nova Ride</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,11 +29,11 @@
                 <a class="nav-link" href="rentados">Vehículos en espera</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Mi Factura</a>
+                <a class="nav-link" href="facturas">Mi Factura</a>
               </li>
             </ul>
             <a class="nav-link" href="">Cerrar Sesión</a>
-            <img src="https://static.vecteezy.com/system/resources/previews/013/923/537/original/red-car-vehicle-auto-detailing-logo-png.png" height="55px" width="55px">
+            <img src="https://cdn-icons-png.flaticon.com/512/4770/4770326.png" height="55px" width="55px">
           </div>
         </div>
       </nav>
@@ -41,7 +41,7 @@
   
        <div class="container mt-5">
        <div class="card-body text-center">
-        <span class="titulo">LISTADO DE VEHÍCULOS DISPONIBLES</span>
+        <span class="titulo">LISTADO DE VEHÍCULOS DISPONIBLES EN EL PROGRESO</span>
         <br><br>
         <form >
           <div class="form-group">
@@ -83,7 +83,7 @@
               <td>{{ vehiculo.zona }}</td>
               <td>
 
-                <button type="button" class="btn btn-success" [routerLink]="['/renta', vehiculo._id]" 
+                <button type="button" class="btn btn-success" [routerLink]="['/crear-factura', vehiculo._id]" 
                 (click)="eliminarVehiculo(vehiculo._id)">Rentar
                   
                 </button>

@@ -8,6 +8,8 @@ import { SpsComponent } from './components/sps/sps.component';
 import { TegucigalpaComponent } from './components/tegucigalpa/tegucigalpa.component';
 import { RentaComponent } from './components/renta/renta.component';
 import { VehiculosRentadosComponent } from './components/vehiculos-rentados/vehiculos-rentados.component';
+import { CrearFacturaComponent } from './components/crear-factura/crear-factura.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
 
 const routes: Routes = [
   {
@@ -46,6 +48,14 @@ const routes: Routes = [
   {
     path: 'rentados',
     component: VehiculosRentadosComponent
+  },
+  {
+    path: 'crear-factura/:id',
+    component: CrearFacturaComponent
+  },
+  {
+    path: 'facturas',
+    component: FacturasComponent
   }
 ];
 

@@ -28,16 +28,8 @@
               <li class="nav-item">
                 <a class="nav-link" href="rentados">Vehículos en espera</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link disabled" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="">Mi Factura</a>
               </li>
             </ul>
             <a class="nav-link" href="">Cerrar Sesión</a>
@@ -46,41 +38,37 @@
         </div>
       </nav>
    <br>
+  
        <div class="container mt-5">
        <div class="card-body text-center">
-        <span class="titulo">LISTADO DE VEHÍCULOS RENTADOS</span>
+        <span class="titulo">Mi Factura</span>
+
         <table *ngIf="listProductos.length > 0" class="table table-striped mt-3">
           <thead>
             <tr>
+              <th scope="col">DNI Cliente</th>
+              <th scope="col">Nombre</th>
               <th scope="col">Placa</th>
               <th scope="col">Marca</th>
               <th scope="col">Modelo</th>
-              <th scope="col">Año</th>
-              <th scope="col">Transmisión</th>
-              <th scope="col">Color</th>
-              <th scope="col">Tipo</th>
-              <th scope="col">Zona</th>
-              <th scope="col">Tiempo de Renta</th>
-              <th scope="col">Fecha de Inicio</th>
+              <th scope="col">Fecha Inicio</th>
               <th scope="col">Fecha Final</th>
+              <th scope="col">Total</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let vehiculo of listProductos">
-              <td>{{ vehiculo.placa }}</td>
-              <td>{{ vehiculo.marca }}</td>
-              <td>{{ vehiculo.modelo }}</td>
-              <td>{{ vehiculo.anio }}</td>
-              <td>{{ vehiculo.transmision }}</td>
-              <td>{{ vehiculo.color }}</td>
-              <td>{{ vehiculo.tipo }}</td>
-              <td>{{ vehiculo.zona }}</td>
-              <td>{{ vehiculo.tiempoRenta }} Días</td>
-              <td>{{ vehiculo.fechaInicio }}</td>
-              <td>{{ vehiculo.fechaFinal }}</td>
+            <tr *ngFor="let vehiculo of listProductos | factura:filterPost">
+                <td>{{ vehiculo.dniCliente }}</td>
+                <td>{{ vehiculo.nombre }}</td>
+                <td>{{ vehiculo.placa }}</td>
+                <td>{{ vehiculo.marca }}</td>
+                <td>{{ vehiculo.modelo }}</td>
+                <td>{{ vehiculo.fechaInicio }}</td>
+                <td>{{ vehiculo.fechaFinal }}</td>
+                <td>{{ vehiculo.total }} Lempiras</td>
               <td>
-
+               
               </td>
             </tr>
           </tbody>

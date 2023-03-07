@@ -18,6 +18,9 @@ import { RentaComponent } from './components/renta/renta.component';
 import { VehiculosRentadosComponent } from './components/vehiculos-rentados/vehiculos-rentados.component';
 import { ZonasPipe } from './pipes/zonas.pipe';
 import { VehiculoPipe } from './pipes/vehiculo.pipe';
+import { CrearFacturaComponent } from './components/crear-factura/crear-factura.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
+import { FacturaPipe } from './pipes/factura.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { VehiculoPipe } from './pipes/vehiculo.pipe';
     RentaComponent,
     VehiculosRentadosComponent,
     ZonasPipe,
-    VehiculoPipe
+    VehiculoPipe,
+    CrearFacturaComponent,
+    FacturasComponent,
+    FacturaPipe
   ],
   imports: [
     BrowserModule,
