@@ -10,7 +10,7 @@
                                 placeholder="DNI Cliente" >
                             <div class="text-danger"
                                 *ngIf="vehiculoForm.get('dniCliente')?.hasError('required') && vehiculoForm.get('dniCliente')?.touched">
-                                <span>El nombre del producto <strong>es obligatorio</strong></span>
+                                <span>El DNI del cliente <strong>es obligatorio</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -18,7 +18,7 @@
                                 placeholder="Nombre">
                             <div class="text-danger"
                                 *ngIf="vehiculoForm.get('nombre')?.hasError('required') && vehiculoForm.get('nombre')?.touched">
-                                <span>La categoria <strong>es obligatoria</strong></span>
+                                <span>El nombre <strong>es obligatorio</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -26,7 +26,6 @@
                                 placeholder="Placa">
                             <div class="text-danger"
                                 *ngIf="vehiculoForm.get('placa')?.hasError('required') && vehiculoForm.get('placa')?.touched">
-                                <span>La ubicacion <strong>es obligatoria</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -34,7 +33,6 @@
                                 placeholder="Marca">
                             <div class="text-danger"
                                 *ngIf="vehiculoForm.get('marca')?.hasError('required') && vehiculoForm.get('marca')?.touched">
-                                <span>La ubicacion <strong>es obligatoria</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -42,7 +40,55 @@
                                 placeholder="Modelo">
                             <div class="text-danger"
                                 *ngIf="vehiculoForm.get('modelo')?.hasError('required') && vehiculoForm.get('modelo')?.touched">
-                                <span>El precio <strong>es obligatorio</strong></span>
+                              
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" formControlName="anio" class="form-control form-control-lg"
+                                placeholder="Año">
+                            <div class="text-danger"
+                                *ngIf="vehiculoForm.get('anio')?.hasError('required') && vehiculoForm.get('anio')?.touched">
+                               
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="transmision" class="form-control form-control-lg"
+                                placeholder="Transmisión">
+                            <div class="text-danger"
+                                *ngIf="vehiculoForm.get('transmision')?.hasError('required') && vehiculoForm.get('transmision')?.touched">
+                              
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="color" class="form-control form-control-lg"
+                                placeholder="Color">
+                            <div class="text-danger"
+                                *ngIf="vehiculoForm.get('color')?.hasError('required') && vehiculoForm.get('color')?.touched">
+                               
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="tipo" class="form-control form-control-lg"
+                                placeholder="Tipo">
+                            <div class="text-danger"
+                                *ngIf="vehiculoForm.get('tipo')?.hasError('required') && vehiculoForm.get('tipo')?.touched">
+                                
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="zona" class="form-control form-control-lg"
+                                placeholder="Zona">
+                            <div class="text-danger"
+                                *ngIf="vehiculoForm.get('zona')?.hasError('required') && vehiculoForm.get('zona')?.touched">
+                              
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="tiempoRenta" class="form-control form-control-lg"
+                                placeholder="Tiempo de Renta">
+                            <div class="text-danger"
+                                *ngIf="vehiculoForm.get('tiempoRenta')?.hasError('required') && vehiculoForm.get('tiempoRenta')?.touched">
+                                
                             </div>
                         </div>
                         <div class="mb-3">
@@ -50,7 +96,7 @@
                                 placeholder="Fecha de Inicio">
                             <div class="text-danger"
                                 *ngIf="vehiculoForm.get('fechaInicio')?.hasError('required') && vehiculoForm.get('fechaInicio')?.touched">
-                                <span>El precio <strong>es obligatorio</strong></span>
+                                
                             </div>
                         </div>
                         <div class="mb-3">
@@ -58,7 +104,7 @@
                                 placeholder="Fecha Final">
                             <div class="text-danger"
                                 *ngIf="vehiculoForm.get('fechaFinal')?.hasError('required') && vehiculoForm.get('fechaFinal')?.touched">
-                                <span>El precio <strong>es obligatorio</strong></span>
+                             
                             </div>
                         </div>
                         <div class="mb-3">
@@ -66,12 +112,12 @@
                                 placeholder="Total">
                             <div class="text-danger"
                                 *ngIf="vehiculoForm.get('total')?.hasError('required') && vehiculoForm.get('total')?.touched">
-                                <span>El precio <strong>es obligatorio</strong></span>
+                             
                             </div>
                         </div>
                         <div class="mb-3">
                             <button routerLink="/home" class="btn btn-secondary btn-lg float-start">VOLVER</button>
-                            <button type="submit" [disabled]="vehiculoForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                            <button type="submit" [disabled]="vehiculoForm.invalid" class="btn btn-success btn-lg float-end" >ACEPTAR</button>
                         </div>
                     </form>
                 </div>

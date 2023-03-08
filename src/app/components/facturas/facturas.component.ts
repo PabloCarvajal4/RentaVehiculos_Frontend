@@ -5,6 +5,7 @@ import { RentadosService } from 'src/app/services/rentados.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService} from '../../services/auth.service'
 
 @Component({
   selector: 'app-facturas',
@@ -12,16 +13,20 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./facturas.component.css']
 })
 export class FacturasComponent implements OnInit {
+  user = {
+    password:''
+  }
   titulo = 'Facturas';
   listProductos: Factura[] = [];
   
-  filterPost = 'pablo ';
+  filterPost = 'pablo'
   filterVehiculo ='';
   constructor(private _facturaService: FacturaService,
     private fb: FormBuilder,
     private router: Router,
     private aRouter: ActivatedRoute,
-    private toastr: ToastrService) 
+    private toastr: ToastrService,
+    private authService: AuthService) 
     { 
      
   }
@@ -38,7 +43,19 @@ export class FacturasComponent implements OnInit {
     })
   }
 
-
+  signIn() {
+    this.authService.signInUser(this.user)
+      .subscribe(
+        res => {
+          this.toastr.success('Bienvenido!');
+          console.log(res);    
+          localStorage.setItem('token', res.token); 
+          this.router.navigate(['/home']);
+        },
+        err => this.toastr.error('Credenciales Incorrectas','Error de Inicio de sesión')
+               
+      )
+  }
 
   
   
