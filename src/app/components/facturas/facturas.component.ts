@@ -19,7 +19,7 @@ export class FacturasComponent implements OnInit {
   titulo = 'Facturas';
   listProductos: Factura[] = [];
   
-  filterPost = 'pablo'
+  filterPost = '.'
   filterVehiculo ='';
   constructor(private _facturaService: FacturaService,
     private fb: FormBuilder,

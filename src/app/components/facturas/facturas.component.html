@@ -23,9 +23,6 @@
                 <a class="nav-link " aria-current="page" href="home">Zonas</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="progreso">Vehículos Disponibles</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="rentados">Vehículos en espera</a>
               </li>
               <li class="nav-item">
@@ -37,43 +34,89 @@
           </div>
         </div>
       </nav>
-   <br>
-  
-       <div class="container mt-5">
-       <div class="card-body text-center">
-        <span class="titulo">Mi Factura</span>
 
-        <table *ngIf="listProductos.length > 0" class="table table-striped mt-3">
-          <thead>
-            <tr>
-              <th scope="col">DNI Cliente</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Placa</th>
-              <th scope="col">Marca</th>
-              <th scope="col">Modelo</th>
-              <th scope="col">Fecha Inicio</th>
-              <th scope="col">Fecha Final</th>
-              <th scope="col">Total</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let vehiculo of listProductos | factura:filterPost">
-                <td>{{ vehiculo.dniCliente }}</td>
-                <td>{{ vehiculo.nombre }}</td>
+   
+       <div class="container mt-5">
+        <h4><em>Ingrese su contraseña para mostrar su factura:</em></h4>
+        <div class="" style="width: 18rem;">
+        <input type="password" class="form-control" name="filterVehiculo" placeholder="" [(ngModel)]="filterPost"><br>
+        <button type="button" class="btn btn-success" [(ngModel)]="filterPost" (click)="filterPost">Confirmar</button><br><br>
+</div>
+
+        <h2>Factura</h2>
+        <div class="row my-3">
+          <div class="col-10">
+            <h1><em>Nova Ride</em></h1>
+          </div>
+          <div class="col-2">
+            <img src="https://static.vecteezy.com/system/resources/previews/013/923/537/original/red-car-vehicle-auto-detailing-logo-png.png"  height="150px" width="150px"/>
+          </div>
+        </div>
+      
+        <hr />
+      
+        <div class="row fact-info mt-3" *ngFor="let vehiculo of listProductos | factura:filterPost">
+          <div class="col-3">
+            <h5>DNI del Cliente</h5>
+            <p >
+              {{ vehiculo.dniCliente }}
+            </p>
+          </div>
+          <div class="col-3">
+            <h5>Nombre</h5>
+            <p>
+              {{ vehiculo.nombre }}
+            </p>
+          </div>
+          <div class="col-3">
+            <h5>N° de factura</h5>
+            <h5>Fecha de emisión</h5>
+          </div>
+          <div class="col-3">
+            <h5>{{ vehiculo._id }}</h5>
+            <p>{{ vehiculo.createdAt }}</p>
+          </div>
+        </div>
+        <div class="row my-5" *ngFor="let vehiculo of listProductos | factura:filterPost">
+          <table class="table table-borderless factura">
+            <thead>
+              <tr>
+                <th>Placa</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha Final</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
                 <td>{{ vehiculo.placa }}</td>
                 <td>{{ vehiculo.marca }}</td>
                 <td>{{ vehiculo.modelo }}</td>
                 <td>{{ vehiculo.fechaInicio }}</td>
                 <td>{{ vehiculo.fechaFinal }}</td>
-                <td>{{ vehiculo.total }} Lempiras</td>
-              <td>
-               
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <h5 style="text-align: start; margin-top: 10px;" *ngIf="listProductos.length == 0">No hay productos para mostrar</h5>
+              </tr>
+            </tbody>
+            
+            <tfoot >
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                
+                <th>Total Factura</th>
+                <th>{{ vehiculo.total }} L.</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div> 
+        <div class="cond row">
+        
+        </div>
+
+       <div class="card-body text-center">
+
+        <h5 style="text-align: start; margin-top: 10px;" *ngIf="listProductos.length == 0">No hay factura para mostrar</h5>
     </div>
   </div>
     
