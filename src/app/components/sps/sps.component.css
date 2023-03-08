@@ -1,0 +1,15 @@
+.fas {
+    cursor: pointer;
+    margin-left: 7px;
+}
+nav{
+    background: #050036; 
+}
+a{
+    font-size: 15px;
+    color: aliceblue;
+    padding-right: 10px;
+}
+input{
+    padding-right: 50px;
+}

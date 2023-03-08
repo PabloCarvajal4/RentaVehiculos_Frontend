@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="signup.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <form class="nova" action="">
+        <div style="text-align: center;">
+            <h1><em>Nova Ride</em></h1>
+            <img src="https://static.vecteezy.com/system/resources/previews/013/923/537/original/red-car-vehicle-auto-detailing-logo-png.png" height="150px" width="150px"></div>
+
+            <form (submit)="signUp()">
+               
+                    <input type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required autofocus>
+                    <br>
+                    <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required>
+                    <br>
+                    
+                    <button class="btn btn-primary btn-block"> Registrarse</button>
+            </form>
+        <a href="/signin" class="link">Regresar al inicio de sesion</a>
+    </form>
+    
+</body>
+</html>
