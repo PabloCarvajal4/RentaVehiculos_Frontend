@@ -57,6 +57,8 @@ const routes: Routes = [
     path: 'facturas',
     component: FacturasComponent
   }
+
+  
 ];
 
 @NgModule({

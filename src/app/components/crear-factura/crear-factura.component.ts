@@ -11,22 +11,30 @@ import { animation } from '@angular/animations';
 import { ZonasPipe } from 'src/app/pipes/zonas.pipe';
 import { Vehiculo } from 'src/app/models/vehiculo';
 
+
 @Component({
   selector: 'app-crear-factura',
   templateUrl: './crear-factura.component.html',
   styleUrls: ['./crear-factura.component.css']
 })
+
 export class CrearFacturaComponent implements OnInit {
+  
   vehiculoForm: FormGroup;
   titulo = 'Facturación';
   id: string | null;
+  tiempoRenta!: string;
+  resp:number | undefined;
+  listProductos: Vehiculo[] = [];
+
   constructor(private fb: FormBuilder,
               private router: Router,
               private _facturaService: FacturaService,
               private _rentadoService: RentadosService,
               private _vehiculoService: VehiculosService,
               private aRouter: ActivatedRoute,
-              private toastr: ToastrService ) { 
+              private toastr: ToastrService,
+             ) { 
     this.vehiculoForm = this.fb.group({
       dniCliente: ['', Validators.required],
       nombre: ['', Validators.required],
@@ -35,7 +43,7 @@ export class CrearFacturaComponent implements OnInit {
       modelo: ['', Validators.required],
       fechaInicio: ['', Validators.required],
       fechaFinal: ['', Validators.required],
-      total: ['', Validators.required],
+      total: [this.tiempoRenta],
 
       anio : ['', Validators.required],
       transmision: ['', Validators.required],
@@ -56,6 +64,8 @@ export class CrearFacturaComponent implements OnInit {
   agregarVehiculo() {
 
     const PRODUCTO: Factura = {
+
+
       dniCliente: this.vehiculoForm.get('dniCliente')?.value,
       nombre: this.vehiculoForm.get('nombre')?.value,
       placa: this.vehiculoForm.get('placa')?.value,
@@ -94,7 +104,6 @@ export class CrearFacturaComponent implements OnInit {
 
     console.log(VEHICULO);
     this._rentadoService.guardarVehiculo(VEHICULO).subscribe(data => {
-      this.toastr.success('El vehículo fue rentado exitosamente!', 'Vehículo Registrado!');
       this.router.navigate(['/crear-factura']);
     }, error => {
       this.toastr.error('No se puedo rentar el vehículo','Error')
@@ -106,15 +115,17 @@ export class CrearFacturaComponent implements OnInit {
 
     if(this.id !== null) {
       this.titulo = 'Rentar Vehículo';
-      this._facturaService.obtenerFactura(this.id).subscribe(data => {
+      this._vehiculoService.obtenerVehiculo(this.id).subscribe(data => {
         this.vehiculoForm.setValue({
           dniCliente: data.dniCliente,
-          nombre: data.nombre,
+          placa: data.placa,
           marca: data.marca,
           modelo: data.modelo,
-          fechaInicio: data.fechaInicio,
-          total: data.total,
-          fechaFinal: data.fechaFinal,
+          anio: data.anio,
+          transmision: data.transmision,
+          color : data.color,
+          tipo : data.tipo,
+          zona: data.zona
         })
       })
     }
@@ -127,4 +138,5 @@ export class CrearFacturaComponent implements OnInit {
       console.log(error);
     })
   }
+
 }
