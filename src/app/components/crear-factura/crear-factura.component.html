@@ -132,12 +132,22 @@
                              
                             </div>
                         </div>
-                       
+                        <div class="mb-3">
+                            <input type="number" formControlName="total" class="form-control form-control-lg"
+                                placeholder="Total" value="{{rta}}">
+                                <div class="text-danger"
+                                *ngIf="vehiculoForm.get('total')?.hasError('required') && vehiculoForm.get('total')?.touched">
+                             
+                            </div>
+                        </div>
                         <div class="mb-3">
                             <button routerLink="/home" class="btn btn-secondary btn-lg float-start">VOLVER</button> &nbsp;&nbsp;&nbsp;
                             <button type="submit" [disabled]="vehiculoForm.invalid" class="btn btn-primary btn-lg float-end" [(ngModel)]="tiempoRenta" (click)="eliminarVehiculo(id)">ACEPTAR</button>
                         </div>
                     </form>
+                    
+                    <button class="btn btn-primary" (click)="Operacion()"> Calcular Total </button>
+
                 </div>
             </div>
         </div>

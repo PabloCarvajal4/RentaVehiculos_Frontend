@@ -19,11 +19,16 @@ import { Vehiculo } from 'src/app/models/vehiculo';
 })
 
 export class CrearFacturaComponent implements OnInit {
-  
+  tiempoRenta!: number;
+  val2!: number;
+  rta!: number;
+
+Operacion(){
+this.rta=this.tiempoRenta*1000;
+}
   vehiculoForm: FormGroup;
   titulo = 'Facturación';
   id: string | null;
-  tiempoRenta!: string;
   resp:number | undefined;
   listProductos: Vehiculo[] = [];
 
@@ -43,7 +48,7 @@ export class CrearFacturaComponent implements OnInit {
       modelo: ['', Validators.required],
       fechaInicio: ['', Validators.required],
       fechaFinal: ['', Validators.required],
-      total: [this.tiempoRenta],
+      total: ['', Validators.required],
 
       anio : ['', Validators.required],
       transmision: ['', Validators.required],
@@ -53,8 +58,6 @@ export class CrearFacturaComponent implements OnInit {
       tiempoRenta: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
-
-
   }
 
   ngOnInit(): void {
@@ -81,7 +84,7 @@ export class CrearFacturaComponent implements OnInit {
     console.log(PRODUCTO);
     this._facturaService.guardarFactura(PRODUCTO).subscribe(data => {
       this.toastr.success('El vehículo fue rentado exitosamente!', 'Vehículo Registrado!');
-      this.router.navigate(['/crear-factura']);
+      this.router.navigate(['/home']);
     }, error => {
       this.toastr.error('No se puedo rentar el vehículo','Error')
       console.log(error);
@@ -117,7 +120,6 @@ export class CrearFacturaComponent implements OnInit {
       this.titulo = 'Rentar Vehículo';
       this._vehiculoService.obtenerVehiculo(this.id).subscribe(data => {
         this.vehiculoForm.setValue({
-          dniCliente: data.dniCliente,
           placa: data.placa,
           marca: data.marca,
           modelo: data.modelo,
